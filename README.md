@@ -131,7 +131,7 @@ Log info can be found by click the FPS.
 
 ### 2.4 Latency On RDK X5
 
-We evaluate the real-time performance of the YOLO-World-v2-S model and our DOSOD-S model on the development kit of [D-Robotics RDK X5](https://d-robotics.cc/rdkx5).
+We evaluate the real-time performance of the YOLO-World-v2 model and our DOSOD model on the development kit of [D-Robotics RDK X5](https://d-robotics.cc/rdkx5).
 The models are re-parameterized with 1203 categories defined in LVIS. We run the models on the RDK X5 using either 1 thread or 8 threads with INT8 or INT16 quantization modes.
 
 |              model              | FPS (1 thread) | FPS (8 threads) |
@@ -147,8 +147,8 @@ The models are re-parameterized with 1203 categories defined in LVIS. We run the
 Most of the steps are consistent with those in [YOLO-World README.md file](./README-YW.md#getting-started). 
 Some extra things need attention are as follows:  
 
-* clone project: ```git clone XXXXXXXXXX```
-* latency evaluation: we provide [script](tools/evaluate_latency.sh) to evaluate the latency on NVIDIA RTX 4090
+* clone project: ```git clone https://github.com/D-Robotics-AI-Lab/DOSOD.git```
+* latency evaluation: we provide [script](tools/evaluate_latency.sh) to evaluate the latency on NVIDIA GPU
 * note: We pre-train DOSOD on 8 NVIDIA RTX 4090 GPUs with a batchsize of 128 while YOLO-World uses 32 NVIDIA V100 GPUs with the batchsize of 512.
 
 
@@ -182,24 +182,27 @@ python deploy/onnx_demo.py path_to_rep_onnx_file path_to_test_image path_to_text
 > `path_to_rep_onnx_file` is the output from step 3
 
 ### 4.2 On RDK X5
-To make the model available for RDK X5, we need to use another config file in Step 3:
-> `path_to_rep_config_file` should be files with suffix *_d-robotics.py*, for exmaple `configs/dosod/rep_dosod_mlp3x_s_d-robotics.py` <br>
-> For more details, you can refer to [code file](yolo_world/models/dense_heads/dosod_head.py)
+To make the model available for RDK X5, we need to use another config file in Step 3: <br>
+`path_to_rep_config_file` should be files with suffix *_d-robotics.py*, for exmaple `configs/dosod/rep_dosod_mlp3x_s_d-robotics.py`
+For more details, you can refer to [code file](yolo_world/models/dense_heads/dosod_head.py).
+> To run onnx model on RDK X5, you can refer to the [website](https://developer.d-robotics.cc/rdkx5) for more help.
 
 ## Acknowledgement
 
-We sincerely thank [mmyolo](https://github.com/open-mmlab/mmyolo), [mmdetection](https://github.com/open-mmlab/mmdetection), [GLIP](https://github.com/microsoft/GLIP), and [transformers](https://github.com/huggingface/transformers) for providing their wonderful code to the community!
+We sincerely thank [YOLO-World](https://github.com/AILab-CVC/YOLO-World), [mmyolo](https://github.com/open-mmlab/mmyolo), [mmdetection](https://github.com/open-mmlab/mmdetection), [GLIP](https://github.com/microsoft/GLIP), and [transformers](https://github.com/huggingface/transformers) for providing their wonderful code to the community!
 
 ## Citations
 
-If you find YOLO-World is useful in your research or applications, please consider giving us a star 🌟 and citing it.
+If you find DOSOD is useful in your research or applications, please consider giving us a star 🌟 and citing it.
 
 ```bibtex
-@inproceedings{Cheng2024YOLOWorld,
-
+@inproceedings{He2024DOSOD,
+  title={A Light-Weight Framework for Open-Set Object Detection with Decoupled Feature Alignment in Joint Space},
+  author={He, Yonghao and Su, Hu and Yu, Haiyong and Yang, Cong and Sui, Wei and Wang, Cong and Liu, Song},
+  booktitle={arXiv:2412.14680},
+  year={2024}
 }
 ```
 
 ## Licence
-
-YOLO-World is under the GPL-v3 Licence and is supported for commercial usage. If you need a commercial license for YOLO-World, please feel free to contact us.
+DOSOD is under the GPL-v3 Licence and is supported for commercial usage. If you need a commercial license for DOSOD, please feel free to contact us.
