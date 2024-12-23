@@ -113,7 +113,7 @@ All pre-trained models are released.
 
 We utilize the tool of `trtexec` in [TensorRT 8.6.1.6](https://developer.nvidia.com/tensorrt) to assess the latency in FP16 mode.
 All models are re-parameterized with 80 categories from COCO.
-Log info can be found by click the FPS.
+Log info can be found by clicking the FPS.
 
 |     model      | Params |                   FPS                   |
 |:--------------:|:------:|:---------------------------------------:|

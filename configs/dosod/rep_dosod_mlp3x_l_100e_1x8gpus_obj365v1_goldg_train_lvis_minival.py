@@ -8,10 +8,10 @@ joint_space_dims = 512
 
 # model settings
 model = dict(
-    type='RepJointSpaceDetector',
+    type='RepDOSODDetector',
     data_preprocessor=dict(type='YOLOWDetDataPreprocessor'),
-    bbox_head=dict(type='RepJointSpaceYOLOv8Head',
-                   head_module=dict(type='RepJointSpaceYOLOv8dHeadModule',
+    bbox_head=dict(type='RepDOSODYOLOv8Head',
+                   head_module=dict(type='RepDOSODYOLOv8dHeadModule',
                                     text_embed_dims=text_channels,
                                     joint_space_dims=joint_space_dims,
                                     num_classes=num_training_classes)))
