@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/tensorrt:24.03-py3
+FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
 
 # Please contact with me if you have problems
 LABEL maintainer="Zipeng Dai <daizipeng@bit.edu.cn>"
@@ -15,6 +15,7 @@ RUN apt-get update && \
     locales git tmux gedit vim openmpi-bin openmpi-common libopenmpi-dev libgl1 libglx-mesa0 libsm6 libice6 \
     libcanberra-gtk-module libcanberra-gtk3-module libusb-1.0-0 libusb-1.0-0-dev libglib2.0-0  libxext6 \
     libxrender-dev
+RUN apt-get install -y --no-install-recommends python3-dev python3-wheel python3-pip
 
 RUN pip3 install --upgrade pip \
     && pip3 install   \
@@ -24,12 +25,12 @@ RUN pip3 install --upgrade pip \
         mmengine      \
         setuptools    \
         openmim       
-RUN pip3 install --no-cache-dir --index-url https://download.pytorch.org/whl/cu124 \
+RUN  pip3 install --no-cache-dir --index-url https://download.pytorch.org/whl/cu118 \
         wheel         \
         torch         \
         torchvision   \
         torchaudio
-RUN mim install mmcv==2.0.0 
+RUN mim install mmcv==2.0.0
 
 WORKDIR /workspace
 RUN mkdir dosod_weights/ && cd dosod_weights && \

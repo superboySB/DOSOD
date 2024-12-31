@@ -51,4 +51,6 @@ demo/sample_images/bus.jpg \
 data/texts/coco_class_texts.json \
 --output-dir demo/ --onnx-nms
 ```
+
 ## RDK侧复现
+Comming soon!
