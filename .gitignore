@@ -127,3 +127,4 @@ venus_run.sh
 
 /local_test
 /dosod_models
+*.npy

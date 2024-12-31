@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/tensorrt:24.01-py3
+FROM nvcr.io/nvidia/tensorrt:24.03-py3
 
 # Please contact with me if you have problems
 LABEL maintainer="Zipeng Dai <daizipeng@bit.edu.cn>"
@@ -23,13 +23,13 @@ RUN pip3 install --upgrade pip \
         supervision   \
         mmengine      \
         setuptools    \
-        openmim       \
-    && mim install mmcv==2.0.0 \
-    && pip3 install --no-cache-dir --index-url https://download.pytorch.org/whl/cu118 \
+        openmim       
+RUN pip3 install --no-cache-dir --index-url https://download.pytorch.org/whl/cu124 \
         wheel         \
         torch         \
         torchvision   \
         torchaudio
+RUN mim install mmcv==2.0.0 
 
 WORKDIR /workspace
 RUN mkdir dosod_weights/ && cd dosod_weights && \
